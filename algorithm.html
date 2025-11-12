@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Решение алгоритмической задачи</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+      <script>
+        function setActiveLink() {
+            const path = window.location.pathname.split('/').pop();
+            const links = document.querySelectorAll('header a');
+            links.forEach(link => {
+                if (link.getAttribute('href') === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        window.onload = setActiveLink;
+    </script>
+     <header>
+        <div class="container">
+            <h1 style="float: left; margin: 0; padding: 0;">Главная страница питомника "Верный Друг"</h1>
+            <nav>
+                <a href="index.html">Начальная страница</a>
+                <a href="site_content.html">Питомник</a>
+                <a href="dom_read.html">Задание 01/02 (Паспорт)</a>
+                <a href="algorithm.html">Задание 03 (Алгоритм)</a>
+                <a href="https://github.com/vmarshirov/g06u28" target="_blank">Внешний сайт</a>
+                <a href="site_content.html#forms">→ К Формам</a>
+            </nav>
+        </div>
+    </header>
+    <h1>Решение алгоритмической задачи 1011</h1>
+    <a href="index.html">← Назад к навигации</a>
+
+    <h2>Задача 1011: Вычислить Z = 1/(XY)</h2>
+    <p>Введите произвольные значения X и Y. Если хотя бы одно из значений равно нулю, функция не будет определена.</p>
+
+    <div class="input-group">
+        <label for="input_x">Значение X:</label>
+        <input type="number" id="input_x" value="2">
+    </div>
+    
+    <div class="input-group">
+        <label for="input_y">Значение Y:</label>
+        <input type="number" id="input_y" value="4">
+    </div>
+
+    <button onclick="solveAlgorithm()">Вычислить Z</button>
+    
+    <div class="result">
+        Результат Z: <strong id="algorithm-result">Ожидание вычисления</strong>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

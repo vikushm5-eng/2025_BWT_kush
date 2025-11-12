@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Паспорт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+        <h1>Контрольная работа 1</h1>
+   
+    <script src="script.js"></script>
+      <script>
+        function setActiveLink() {
+            const path = window.location.pathname.split('/').pop();
+            const links = document.querySelectorAll('header a');
+            links.forEach(link => {
+                if (link.getAttribute('href') === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        window.onload = setActiveLink;
+    </script>
+     <header>
+        <div class="container">
+            <h1 style="float: left; margin: 0; padding: 0;">Главная страница питомника "Верный Друг"</h1>
+            <nav>
+                <a href="index.html">Начальная страница</a>
+                <a href="site_content.html">Питомник</a>
+                <a href="dom_read.html">Задание 01/02 (Паспорт)</a>
+                <a href="algorithm.html">Задание 03 (Алгоритм)</a>
+                <a href="https://github.com/vmarshirov/g06u28" target="_blank">Внешний сайт</a>
+                <a href="site_content.html#forms">→ К Формам</a>
+            </nav>
+        </div>
+    </header>
+
+    <!--
+    document.getElementById("year").innerText
+    
+    -->
+    
+</body>
+<script src="./change.js"></script>
+
+</html>

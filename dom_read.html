@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>DOM_JS. Считываем информацию из DOM</title>
+   <link rel="stylesheet" href="style.css">
+<body>
+ 
+ <script>
+        function setActiveLink() {
+            const path = window.location.pathname.split('/').pop();
+            const links = document.querySelectorAll('header a');
+            links.forEach(link => {
+                if (link.getAttribute('href') === path) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        window.onload = setActiveLink;
+    </script>
+     <header>
+        <div class="container">
+            <h1 style="float: left; margin: 0; padding: 0;">Главная страница питомника "Верный Друг"</h1>
+            <nav>
+                <a href="index.html">Начальная страница</a>
+                <a href="site_content.html">Питомник</a>
+                <a href="dom_read.html">Задание 01/02 (Паспорт)</a>
+                <a href="algorithm.html">Задание 03 (Алгоритм)</a>
+                <a href="https://github.com/vmarshirov/g06u28" target="_blank">Внешний сайт</a>
+                <a href="site_content.html#forms">→ К Формам</a>
+            </nav>
+        </div>
+    </header>
+
+<div style="margin-top: 60px;"></div>
+
+    <table align="center" cellspacing="1" cellpadding="15" border="3" width="700px">
+
+        <tr>
+            <td align="center" colspan="3" height="50px"> РОССИЙСКАЯ ФЕДЕРАЦИЯ </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <p> Паспорт выда: <span id="МВД"> ГУ МВД ПО МОСКОВСКОМУ РАЙОНУ
+            </td>
+            <td rowspan="5"> 2067 887630 </td>
+        </tr>
+
+        <tr>
+            <td height="25px"> Дата выдачи: <span id="data"> 09.11.2020</span> </td>
+            <td colspan="2"> Код подразделения: <span id="secret_kod"> 109-777 </span> </td>
+        </tr>
+
+        <tr>
+            <td align="right" colspan="3"> <br> <span id="LK"> 517 </span> <br> ________________________________ <br>
+                Личный код
+            </td>
+        </tr>
+
+        <tr>
+            <td align="left" colspan="3"> <span id="podpis"> </span> <br>
+                <br> Подпись сотрудника
+            </td>
+        </tr>
+
+
+        <tr>
+            <td align="right" colspan="3"> <span id="my_pensil"> </span> <br>
+                ________________________________<br> Личная подпись
+            </td>
+        </tr>
+
+
+        <tr>
+            <td width="250" align="left" rowspan="6"> <img src="assport.png" width="300px"> </td>
+
+        </tr>
+
+        <tr>
+            <td align="left" colspan="2">
+                <p> Фамилия: <span id="secondName">Кушманова</span></p>
+            </td>
+            <td rowspan="6" width="10"> 2067 887630 </td>
+        </tr>
+
+        <tr>
+            <td align="left" colspan="2">
+                <p>Имя: <span id="abc">Виктория</span></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="left" colspan="2">
+                <p>Отчество: <span id="father_name"> Сергеевна </span></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <p>Пол: <span id="sex"> ЖЕН. </span> </p>
+            </td>
+            <td>
+                <p>Дата рождения: <span id="year">2006</span></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <p> Место рождения: <span id="place_HB">Москва </span> </p>
+
+            </td>
+
+        </tr>
+
+
+    </table>
+
+
+<div style="margin-top: 100px;"> 
+    <p class="DOM"> <strong>Получение информации из DOM </strong> </p>
+
+    </div>
+ 
+<div style="margin-top: 40px;">
+    <img src="../images/инфо из дом.png" width="1200">
+</div>
+ 
+</div>
+<div style="margin-top: 30px;">
+    <button onclick="readPassportData()"> Считать все данные (Задание 01) </button> 
+    
+        <button id="click" onclick="changeToLatin()"> Изменить язык (Задание 02) </button> 
+
+    <div id="read-result" class="result-box">
+        <strong>Нажмите "Считать все данные"</strong> для вывода информации из DOM сюда и в консоль.
+    </div>
+    
+    <p id="change-status" style="font-weight: bold; margin-bottom: 30px;">
+        Нажмите "Изменить язык" для Задания 02.
+    </p>
+</div>
+
+ 
+<div class="container">
+    <p class="DOM"> <strong>Скриншот разработчика</strong> </p>
+ <tr>
+            <td> <img src="screen.png"> </td>
+
+        </tr>
+
+
+</div>
+ 
+<script>
+    // --- Задание 01: Считывание информации из DOM ---
+    function readPassportData() {
+        // Считываем значения по ID
+        const secondName = document.getElementById('secondName').textContent;
+        const firstName = document.getElementById('abc').textContent;
+        const fatherName = document.getElementById('father_name').textContent;
+        const birthYear = document.getElementById('year').textContent;
+        const placeHB = document.getElementById('place_HB').textContent;
+        
+        const resultDiv = document.getElementById('read-result');
+
+        // Форматированный вывод на страницу
+        resultDiv.innerHTML = `
+            <strong>Считанные данные (Успешно):</strong>
+            <ul>
+                <li>Фамилия: <b>${secondName}</b></li>
+                <li>Имя: <b>${firstName}</b></li>
+                <li>Отчество: <b>${fatherName}</b></li>
+                <li>Год рождения: <b>${birthYear}</b></li>
+                <li>Место рождения: <b>${placeHB}</b></li>
+            </ul>
+        `;
+        
+        // Вывод в консоль (для скриншота)
+        console.log("Считанные данные (Задание 01):", { 
+            secondName, 
+            firstName, 
+            fatherName, 
+            birthYear, 
+            placeHB 
+        });
+    }
+
+    // --- Задание 02: Изменение языка (транслитерация) ---
+    const translitMap = {
+        'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'E', 'Ж': 'Zh', 'З': 'Z',
+        'И': 'I', 'Й': 'Y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O', 'П': 'P', 'Р': 'R',
+        'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts', 'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch',
+        'Ы': 'Y', 'Э': 'E', 'Ю': 'Yu', 'Я': 'Ya', ' ': ' ', '.': '.'
+    };
+
+    function transliterate(text) {
+        text = text.toUpperCase().trim(); 
+        return text.split('').map(char => translitMap[char] || char).join('');
+    }
+
+    function changeToLatin() {
+        // IDs для изменения
+        const secondNameElement = document.getElementById('secondName');
+        const firstNameElement = document.getElementById('abc');
+        const fatherNameElement = document.getElementById('father_name');
+        const statusElement = document.getElementById('change-status');
+        
+        // Читаем текущие значения
+        const currentSecondName = secondNameElement.textContent;
+        const currentFirstName = firstNameElement.textContent;
+
+        // Транслитерируем
+        const newSecondName = transliterate(currentSecondName);
+        const newFirstName = transliterate(currentFirstName);
+        const newFatherName = transliterate(fatherNameElement.textContent);
+        
+        // Обновляем DOM
+        secondNameElement.textContent = newSecondName;
+        firstNameElement.textContent = newFirstName;
+       
+
+        // Обновляем сообщение о статусе
+        statusElement.innerHTML = `
+            ✅ Успешно! Изменено на латиницу: 
+            <b>${newSecondName} ${newFirstName}</b>
+        `;
+
+        // Вывод в консоль (для скриншота)
+        console.log("Данные изменены (Задание 02):", { 
+            newSecondName, 
+            newFirstName, 
+            newFatherName
+        });
+    }
+
+</script>
+
+<script src="change.js"></script>
+
+
+    <!--
+document.getElementById("year").innerText
+document.getElementById("secondName").innerText
+document.getElementsById("abc").innerText
+-->
+
+
+</body>
+
+</html>
